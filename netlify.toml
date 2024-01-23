@@ -1,0 +1,4 @@
+[build]
+  base = "fpl-front-end"
+  publish = "fpl-front-end/build" # Adjust this based on your build output directory
+  command = "npm run build" # Replace with your build command
