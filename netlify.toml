@@ -1,4 +1,8 @@
 [build]
   base = "fpl-front-end"
-  publish = "build" # Adjust this based on your build output directory
-  command = "npm run build" # Replace with your build command
+  publish = "build"
+  command = "npm run build"
+
+[dev]
+  command = "npm start"
+  functions = "netlify/functions/"

@@ -18,6 +18,7 @@ function App() {
   const [emailInvalid, setEmailInvalid] = useState('')
   const [loginInvalid, setLoginInvalid] = useState('')
   const [passwordInvalid, setPasswordInvalid] = useState('')
+  const netlifyFunctionsEndpoint = '/.netlify/functions/express'; // Replace with your Netlify Functions endpoint
   const loginHandler = (event) => {
     event.preventDefault();
   console.log('event', event.target )
@@ -64,7 +65,7 @@ function App() {
     if(isFplIdValid && isEmailValid && isPasswordValid) { 
 
       if (event.target.name === 'pre') { 
-        axios.post('http://localhost:3000/return-predictions')
+        axios.post(`${netlifyFunctionsEndpoint}/return-predictions`)
           .then((response) => {
             console.log(response.data);
             
@@ -74,7 +75,8 @@ function App() {
             console.log('pred', predictionText);
       
             // Chain the second Axios request here
-            return axios.post('http://localhost:3000/return-optimization', { fplId, password, login  });
+            // return axios.post('http://localhost:3000/return-optimization', { fplId, password, login  });
+            return axios.post(`${netlifyFunctionsEndpoint}/return-optimization`, { fplId, password, login });
           })
           .then((response) => {
             console.log('im here', response.data);
@@ -92,7 +94,8 @@ function App() {
       
   
    if (event.target.name === 'opt') { 
-    axios.post('http://localhost:3000/run-optimization', {id})
+    // axios.post('http://localhost:3000/run-optimization', {id})
+    axios.post(`${netlifyFunctionsEndpoint}/run-optimization`, { id })
     .then((response) => {
       console.log(response.data);
       const dataRaw = response.data.output
@@ -105,7 +108,7 @@ function App() {
    }
   
    if (event.target.name === 'run') { 
-    axios.post('http://localhost:3000/run-script',{id} )
+    axios.post(`${netlifyFunctionsEndpoint}/run-script`, { id })
     .then((response) => {
       console.log(response.data);
       const dataRaw = response.data.output
