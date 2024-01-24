@@ -22,7 +22,7 @@ function App() {
  // Assuming this is in your React component
 const fetchData = async () => {
   try {
-    const response = await fetch('/hello');
+    const response = await fetch('/.netlify/functions/api/hello');
     // const data = await response.json();
     console.log(response);
   } catch (error) {
