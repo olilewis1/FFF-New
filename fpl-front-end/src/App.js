@@ -19,23 +19,24 @@ function App() {
   const [loginInvalid, setLoginInvalid] = useState('')
   const [passwordInvalid, setPasswordInvalid] = useState('')
   const netlifyFunctionsEndpoint = '/.netlify/functions/api'; // Replace with your Netlify Functions endpoint
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/hello');
+      const data = await response.json();
+      console.log('dataaaa', data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
+    
+    // Call the function
+    fetchData();
   const loginHandler = (event) => {
     event.preventDefault();
   console.log('event', event.target )
   // Assuming this is in your React component
-const fetchData = async () => {
-  try {
-    const response = await fetch('/hello');
-    const data = await response.json();
-    console.log('dataaaa', data);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
 
-  
-  // Call the function
-  fetchData();
 
 
 // error handling server side
