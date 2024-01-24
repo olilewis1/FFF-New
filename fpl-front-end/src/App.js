@@ -23,7 +23,7 @@ function App() {
     try {
       const response = await fetch('/hello');
       const data = await response.json();
-      console.log('dataaaa', response);
+      console.log('dataaaa', response, data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
