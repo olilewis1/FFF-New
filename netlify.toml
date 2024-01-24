@@ -6,3 +6,9 @@
 [dev]
   command = "npm run start-netlify" # Adjust this based on your setup
   functions = "netlify/functions/"
+
+[[redirects]]
+  force = true
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
