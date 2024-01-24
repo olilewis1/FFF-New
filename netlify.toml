@@ -4,5 +4,5 @@
   command = "npm run build"
 
 [dev]
-  command = "npm start"
+  command = "npm run start-netlify" # Adjust this based on your setup
   functions = "netlify/functions/"
