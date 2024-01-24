@@ -18,7 +18,7 @@ function App() {
   const [emailInvalid, setEmailInvalid] = useState('')
   const [loginInvalid, setLoginInvalid] = useState('')
   const [passwordInvalid, setPasswordInvalid] = useState('')
-  const netlifyFunctionsEndpoint = '/.netlify/functions/express'; // Replace with your Netlify Functions endpoint
+  const netlifyFunctionsEndpoint = '/.netlify/functions/apli'; // Replace with your Netlify Functions endpoint
   const loginHandler = (event) => {
     event.preventDefault();
   console.log('event', event.target )
