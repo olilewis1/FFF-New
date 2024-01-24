@@ -31,7 +31,7 @@ function App() {
   // Call the function
   fetchData();
 
-console.log(data); // Assuming the response is JSON
+
 // error handling server side
   const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(login);
   let isFplIdValid
