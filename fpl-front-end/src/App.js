@@ -22,12 +22,17 @@ function App() {
   const loginHandler = (event) => {
     event.preventDefault();
   console.log('event', event.target )
-  async function fetchData() {
-    const response = await fetch('/.netlify/functions/api/hello');
-    
-  
-    console.log('dataaaaa', response.data);
+  // Assuming this is in your React component
+const fetchData = async () => {
+  try {
+    const response = await fetch('/hello');
+    const data = await response.json();
+    console.log('dataaaa', data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
   }
+};
+
   
   // Call the function
   fetchData();
