@@ -23,11 +23,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run start:app && npm run start:lambda",
+    "start:app": "react-scripts start",
+    "start:lambda": "netlify-lambda serve netlify/functions",
+    "build": "npm run build:app && npm run build:lambda",
+    "build:app": "react-scripts build",
+    "build:lambda": "netlify-lambda build netlify/functions",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start-netlify": "netlify dev"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

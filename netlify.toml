@@ -2,6 +2,7 @@
   base = "fpl-front-end"
   publish = "build"
   command = "npm run build"
+  functions = "functions"
 
 [functions]
   external_node_modules = ["express"]
@@ -11,3 +12,4 @@
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/api/:splat"
+

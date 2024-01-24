@@ -19,15 +19,16 @@ function App() {
   const [loginInvalid, setLoginInvalid] = useState('')
   const [passwordInvalid, setPasswordInvalid] = useState('')
   const netlifyFunctionsEndpoint = '/.netlify/functions/api'; // Replace with your Netlify Functions endpoint
-  const fetchData = async () => {
-    try {
-      const response = await fetch('/hello');
-      const data = await response.json();
-      console.log('dataaaa', response, data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+ // Assuming this is in your React component
+const fetchData = async () => {
+  try {
+    const response = await fetch('/hello');
+    // const data = await response.json();
+    console.log(response);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
   
     
     // Call the function
