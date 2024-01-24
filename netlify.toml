@@ -4,8 +4,12 @@
   command = "npm run build"
 
 [dev]
-  command = "npm run start-netlify" # Adjust this based on your setup
+  command = "npm run start-netlify"
   functions = "netlify/functions/"
+
+[functions]
+  external_node_modules = ["express"]
+  node_bundler = "esbuild"
 
 [[redirects]]
   force = true

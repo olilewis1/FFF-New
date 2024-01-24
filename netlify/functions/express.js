@@ -1,26 +1,21 @@
-// functions/express.js
+// netlify/functions/api.js
 
 const express = require('express');
 const serverless = require('serverless-http');
-const { Router } = require('express');
-const { exec } = require('child_process');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const { exec } = require('child_process');
 const fs = require('fs');
+
 const app = express();
+const router = express.Router();
 
-const router = Router();
-router.get('/hello', (req, res) => res.send('Hello World!'));
-
-app.use('/api/', router);
-
-// Middleware
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Execute the shell script
-app.post('/api/run-script', (req, res) => {
+router.post('/run-script', (req, res) => {
   console.log('Starting script execution...');
   exec('./airsenal_run_prediction.sh 3705355', (error, stdout, stderr) => {
     console.log('Script execution completed.');
@@ -44,7 +39,7 @@ app.post('/api/run-script', (req, res) => {
 });
 
 // Return predictions only 
-app.post('/api/return-predictions', (req, res) => {
+router.post('/return-predictions', (req, res) => {
   console.log('Starting script execution...');
 
   // Read the contents of the output file
@@ -60,7 +55,7 @@ app.post('/api/return-predictions', (req, res) => {
 });
 
 // Run optimization
-app.post('/api/run-optimization', (req, res) => {
+router.post('/run-optimization', (req, res) => {
   console.log(req.body, 'hi');
   const id = req.body.fplId;
   const email = req.body.login;
@@ -100,7 +95,7 @@ app.post('/api/run-optimization', (req, res) => {
 });
 
 // Return optimization
-app.post('/api/return-optimization', (req, res) => {
+router.post('/return-optimization', (req, res) => {
   console.log('req', req.body);
 
   // Read the contents of the output file
@@ -116,7 +111,8 @@ app.post('/api/return-optimization', (req, res) => {
   });
 });
 
-// Convert your Express app to a Netlify Function
+app.use('/api', router);
+
 module.exports.handler = serverless(app);
 
 
