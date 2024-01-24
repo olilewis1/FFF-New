@@ -24,6 +24,7 @@ function App() {
   console.log('event', event.target )
   async function fetchData() {
     const response = await fetch('/.netlify/functions/api/hello');
+    
   
     console.log('dataaaaa', response.data);
   }
