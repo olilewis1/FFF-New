@@ -23,7 +23,7 @@ function App() {
     try {
       const response = await fetch('/hello');
       const data = await response.json();
-      console.log('dataaaa', data);
+      console.log('dataaaa', response);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -31,7 +31,7 @@ function App() {
   
     
     // Call the function
-    fetchData();
+    fetchData()
   const loginHandler = (event) => {
     event.preventDefault();
   console.log('event', event.target )
