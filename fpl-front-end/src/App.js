@@ -23,8 +23,8 @@ function App() {
 const fetchData = async () => {
   try {
     const response = await fetch('/api/hello');
-    // const data = await response.json();
-    console.log(response);
+    const data = await response.json();
+    console.log(data);
   } catch (error) {
     console.error('Error fetching data:', error);
   }

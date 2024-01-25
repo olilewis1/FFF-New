@@ -2,6 +2,8 @@
   base = "fpl-front-end"
   publish = "build"
   command = "npm run build"
+[dev]
+  server = 8888
 [functions]
   external_node_modules = ["express"]
   node_bundler = "esbuild"
