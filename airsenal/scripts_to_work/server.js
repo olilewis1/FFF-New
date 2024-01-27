@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs'); // Import the fs module
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const { exec } = require('child_process');
 const { stderr } = require('process');
 
@@ -145,6 +145,6 @@ app.post('/return-optimization', (req, res) => {
         res.json({ message: 'Script executed successfully', output: data });
       });
     });
-app.listen(3000, () => { 
+app.listen(PORT, () => { 
   console.log('Server is running on port 3000');
 });
