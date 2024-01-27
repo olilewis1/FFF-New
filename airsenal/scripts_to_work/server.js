@@ -4,12 +4,19 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs'); // Import the fs module
 const app = express();
-const port = 3001;
+const port = 3000;
 const { exec } = require('child_process');
 const { stderr } = require('process');
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.send('Hello, this is your Express server!');
+});
+
+
 // execute predictions
 app.post('/run-script', (req, res) => {
   console.log('Starting script execution...');
