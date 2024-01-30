@@ -22,8 +22,8 @@ function App() {
  // Assuming this is in your React component
 const fetchData = async () => {
   try {
-    const response = await fetch('/api/');
-    const data = await response.json();
+    const response = await fetch('/');
+    const data = await response.text();
     console.log(data);
   } catch (error) {
     console.error('Error fetching data:', error);
