@@ -18,21 +18,39 @@ function App() {
   const [emailInvalid, setEmailInvalid] = useState('')
   const [loginInvalid, setLoginInvalid] = useState('')
   const [passwordInvalid, setPasswordInvalid] = useState('')
-  const netlifyFunctionsEndpoint = '/api'; // Replace with your Netlify Functions endpoint
+  const netlifyFunctionsEndpoint = 'https://intense-mesa-52084-9ff6af5d5509.herokuapp.com/api/hi'; // Replace with your Netlify Functions endpoint
  // Assuming this is in your React component
 const fetchData = async () => {
   try {
-    const response = await fetch('/');
+    const response = await fetch('https://intense-mesa-52084-9ff6af5d5509.herokuapp.com/api/hi');
     const data = await response.json(); // This line extracts JSON data
     console.log(data);
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 };
-  
+const fetchDataTwo = async () => {
+  try {
+    const response = await fetch('https://intense-mesa-52084-9ff6af5d5509.herokuapp.com/api/return-predictions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // You may need to include additional headers if required by your server
+      },
+      // You can include a request body if needed (for sending data to the server)
+      // body: JSON.stringify({ key: 'value' }),
+    });
+
+    const data = await response.json(); // This line extracts JSON data
+    console.log(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
     
     // Call the function
     fetchData()
+    fetchDataTwo()
   const loginHandler = (event) => {
     event.preventDefault();
   console.log('event', event.target )

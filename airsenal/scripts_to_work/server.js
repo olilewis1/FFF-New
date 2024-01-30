@@ -49,7 +49,7 @@ app.post('/run-script', (req, res) => {
 });
 
 // return predictions only 
-app.post('/return-predictions' , (req, res) => {
+router.post('/return-predictions' , (req, res) => {
 
   console.log('Starting script execution...');
 
