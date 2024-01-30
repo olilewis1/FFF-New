@@ -68,7 +68,7 @@ router.post('/return-predictions' , (req, res) => {
   });
 
 // run optimization
-app.post('/run-optimization', (req, res) => {
+router.post('/run-optimization', (req, res) => {
 console.log(req.body, 'hi')
 const id = req.body.fplId
 // const id = "3705355"
