@@ -2,6 +2,9 @@
   "name": "node",
   "version": "1.0.0",
   "description": "Heroku",
+  "engines": {
+    "node": "21.6.1"
+    },
   "main": "index.js",
   
   "scripts": {
