@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.json('Hello, this is your Express server! Im workinggg');
+  res.json('Hello, this is your Express server! Im started');
 });
 
 
