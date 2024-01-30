@@ -32,113 +32,113 @@ const fetchData = async () => {
     
     // Call the function
     fetchData()
-  const loginHandler = (event) => {
-    event.preventDefault();
-  console.log('event', event.target )
-  // Assuming this is in your React component
+//   const loginHandler = (event) => {
+//     event.preventDefault();
+//   console.log('event', event.target )
+//   // Assuming this is in your React component
 
 
 
-// error handling server side
-  const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(login);
-  let isFplIdValid
-  const isPasswordValid = password.length > 7 
-  if(!isPasswordValid) { 
-    setPasswordInvalid('is-invalid')
-  }
-  else { 
-    setPasswordInvalid('')
-  }
-  if (/^\d+$/.test(fplId) && fplId.length === 7 ) { 
-   isFplIdValid = true
-  } 
-  else { 
-    isFplIdValid = false
-  }
-  if (!isEmailValid)  { 
-    console.log('hiii', isEmailValid)
-    if ( !isEmailValid) {      console.log(' email not valid')
-    setEmailInvalid('is-invalid') }
-    }
+// // error handling server side
+//   const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(login);
+//   let isFplIdValid
+//   const isPasswordValid = password.length > 7 
+//   if(!isPasswordValid) { 
+//     setPasswordInvalid('is-invalid')
+//   }
+//   else { 
+//     setPasswordInvalid('')
+//   }
+//   if (/^\d+$/.test(fplId) && fplId.length === 7 ) { 
+//    isFplIdValid = true
+//   } 
+//   else { 
+//     isFplIdValid = false
+//   }
+//   if (!isEmailValid)  { 
+//     console.log('hiii', isEmailValid)
+//     if ( !isEmailValid) {      console.log(' email not valid')
+//     setEmailInvalid('is-invalid') }
+//     }
     
-      if( isEmailValid) { 
-        setEmailInvalid('')
-        console.log('email fine')
-      }
+//       if( isEmailValid) { 
+//         setEmailInvalid('')
+//         console.log('email fine')
+//       }
     
-  if (!isFplIdValid) { 
+//   if (!isFplIdValid) { 
   
-      setLoginInvalid('is-invalid')
-      console.log('Login Invalid')
+//       setLoginInvalid('is-invalid')
+//       console.log('Login Invalid')
     
-  }
-    if (isFplIdValid) { 
-      setLoginInvalid('')
-      console.log('password is fine')
-    }
+//   }
+//     if (isFplIdValid) { 
+//       setLoginInvalid('')
+//       console.log('password is fine')
+//     }
   
-  const id  = "3705355"
-    // Now you can access the login, password, and fplId values here
-    if(isFplIdValid && isEmailValid && isPasswordValid) { 
+//   const id  = "3705355"
+//     // Now you can access the login, password, and fplId values here
+//     if(isFplIdValid && isEmailValid && isPasswordValid) { 
 
-      if (event.target.name === 'pre') { 
-        axios.post(`${netlifyFunctionsEndpoint}/return-predictions`)
-          .then((response) => {
-            console.log(response.data);
+//       if (event.target.name === 'pre') { 
+//         axios.post(`${netlifyFunctionsEndpoint}/return-predictions`)
+//           .then((response) => {
+//             console.log(response.data);
             
-            const dataRaw = response.data.output;
-            const data = dataRaw.split('\n');
-            setPredictionText(data);
-            console.log('pred', predictionText);
+//             const dataRaw = response.data.output;
+//             const data = dataRaw.split('\n');
+//             setPredictionText(data);
+//             console.log('pred', predictionText);
       
-            // Chain the second Axios request here
-            // return axios.post('http://localhost:3000/return-optimization', { fplId, password, login  });
-            return axios.post(`${netlifyFunctionsEndpoint}/return-optimization`, { fplId, password, login });
-          })
-          .then((response) => {
-            console.log('im here', response.data);
-            const dataRaw = response.data.output;
-            const data = dataRaw.split('\n');
-            setOptimizationText(data);
-            setLogin('')
-            setPassword('')
-            setFplId('')
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }
+//             // Chain the second Axios request here
+//             // return axios.post('http://localhost:3000/return-optimization', { fplId, password, login  });
+//             return axios.post(`${netlifyFunctionsEndpoint}/return-optimization`, { fplId, password, login });
+//           })
+//           .then((response) => {
+//             console.log('im here', response.data);
+//             const dataRaw = response.data.output;
+//             const data = dataRaw.split('\n');
+//             setOptimizationText(data);
+//             setLogin('')
+//             setPassword('')
+//             setFplId('')
+//           })
+//           .catch((error) => {
+//             console.error(error);
+//           });
+//       }
       
   
-   if (event.target.name === 'opt') { 
-    // axios.post('http://localhost:3000/run-optimization', {id})
-    axios.post(`${netlifyFunctionsEndpoint}/run-optimization`, { id })
-    .then((response) => {
-      console.log(response.data);
-      const dataRaw = response.data.output
-      const data = dataRaw.split('\n')
-      setOptimizationText(data)
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-   }
+//    if (event.target.name === 'opt') { 
+//     // axios.post('http://localhost:3000/run-optimization', {id})
+//     axios.post(`${netlifyFunctionsEndpoint}/run-optimization`, { id })
+//     .then((response) => {
+//       console.log(response.data);
+//       const dataRaw = response.data.output
+//       const data = dataRaw.split('\n')
+//       setOptimizationText(data)
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//     });
+//    }
   
-   if (event.target.name === 'run') { 
-    axios.post(`${netlifyFunctionsEndpoint}/run-script`, { id })
-    .then((response) => {
-      console.log(response.data);
-      const dataRaw = response.data.output
-      const data = dataRaw.split('\n')
-      setOptimizationText(data)
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-   }
-    }
+//    if (event.target.name === 'run') { 
+//     axios.post(`${netlifyFunctionsEndpoint}/run-script`, { id })
+//     .then((response) => {
+//       console.log(response.data);
+//       const dataRaw = response.data.output
+//       const data = dataRaw.split('\n')
+//       setOptimizationText(data)
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//     });
+//    }
+//     }
     
-  }
+//   }
 
   const pullData = (data) => {
     console.log('App: funcccy', data);
