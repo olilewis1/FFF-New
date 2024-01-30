@@ -2,17 +2,22 @@ const express = require('express');
 const { spawn } = require('child_process');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const fs = require('fs'); // Import the fs module
+const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const { exec } = require('child_process');
-const { stderr } = require('process');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+// Create an instance of express.Router
+const router = express.Router();
+
+// Mount the router with the base URL prefix '/api'
+app.use('/api', router);
+
+router.get('/', (req, res) => {
   res.json('Hello, this is your Express server! Im started');
 });
 
