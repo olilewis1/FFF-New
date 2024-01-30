@@ -18,11 +18,10 @@ function App() {
   const [emailInvalid, setEmailInvalid] = useState('')
   const [loginInvalid, setLoginInvalid] = useState('')
   const [passwordInvalid, setPasswordInvalid] = useState('')
-  const netlifyFunctionsEndpoint = '/.netlify/functions/api'; // Replace with your Netlify Functions endpoint
  // Assuming this is in your React component
 const fetchData = async () => {
   try {
-    const response = await fetch('/api/return-predictions');
+    const response = await fetch('/api/');
     const data = await response.json();
     console.log(data);
   } catch (error) {
