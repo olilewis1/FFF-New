@@ -22,7 +22,7 @@ function App() {
  // Assuming this is in your React component
 const fetchData = async () => {
   try {
-    const response = await fetch('/api');
+    const response = await fetch('/');
     const data = await response.json(); // This line extracts JSON data
     console.log(data);
   } catch (error) {

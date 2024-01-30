@@ -17,7 +17,7 @@ const router = express.Router();
 // Mount the router with the base URL prefix '/api'
 app.use('/api', router);
 
-router.get('/', (req, res) => {
+router.get('/hi', (req, res) => {
   res.json('Hello, this is your Express server! Im started');
 });
 
