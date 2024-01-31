@@ -31,7 +31,7 @@ const fetchData = async () => {
 };
 const fetchDataTwo = async () => {
   try {
-    const response = await fetch('https://intense-mesa-52084-9ff6af5d5509.herokuapp.com/api/return-predictions', {
+    const response = await fetch('https://intense-mesa-52084-9ff6af5d5509.herokuapp.com/api/run-optimization', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -18,7 +18,19 @@ const router = express.Router();
 app.use('/api', router);
 
 router.get('/hi', (req, res) => {
-  res.json('Hello, this is your Express server! Im started');
+  const { FPL_TEAM_ID } = 3705355;
+
+  const command = `docker run --rm -e FPL_TEAM_ID=${FPL_TEAM_ID} begoriak/fff:airsenal poetry run airsenal_run_pipeline`;
+
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing Docker command: ${error}`);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+    console.log(`Docker command output: ${stdout}`);
+    res.json({ output: stdout });
+  });
 });
 
 
