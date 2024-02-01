@@ -5,20 +5,20 @@ RUN apt-get update && \
     curl -sSL https://install.python-poetry.org | python3 -
 
 # Add Poetry to the PATH
-ENV PATH="/root/.poetry/bin:${PATH}"
+# ENV PATH="/root/.poetry/bin:${PATH}"
 
 WORKDIR /airsenal
 
 COPY . /airsenal
-
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
 # Add Poetry binary to PATH
 ENV PATH="${PATH}:/root/.poetry/bin"
 
-# Manually install dependencies and set up the environment
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-interaction --no-ansi
+# Install dependencies
+COPY pyproject.toml poetry.lock /airsenal/
+RUN cd /airsenal && poetry install --no-interaction --no-ansi
+
 
 CMD ["poetry", "run", "airsenal_run_pipeline"]
