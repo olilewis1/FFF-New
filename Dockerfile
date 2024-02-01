@@ -1,13 +1,21 @@
 FROM python:3.11-slim-buster
 
+# Install system dependencies
 RUN apt-get update && \
-    apt-get install build-essential git sqlite3 curl -y && \
-    pip install -U setuptools poetry
+    apt-get install build-essential git curl -y
 
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
+ENV PATH="${PATH}:/root/.local/bin"
+
+# Set up the working directory
 WORKDIR /airsenal
 
-COPY . /airsenal
+# Copy the project files
+COPY pyproject.toml poetry.lock /airsenal/
 
-RUN poetry install --extras "api"
+# Install dependencies
+RUN poetry install --no-interaction --no-ansi
 
+# Set the entrypoint
 CMD ["poetry", "run", "airsenal_run_pipeline"]
