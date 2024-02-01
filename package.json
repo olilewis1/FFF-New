@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node airsenal/scripts_to_work/server.js"
+    "start": "node airsenal/scripts_to_work/server.js",
+    "heroku-postbuild": "curl -sSL https://install.python-poetry.org | python3 -"
   },
   "keywords": [
     "example",
