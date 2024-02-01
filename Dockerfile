@@ -11,6 +11,14 @@ WORKDIR /airsenal
 
 COPY . /airsenal
 
-RUN poetry install --extras "api"
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+# Add Poetry binary to PATH
+ENV PATH="${PATH}:/root/.poetry/bin"
+
+# Manually install dependencies and set up the environment
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-interaction --no-ansi
 
 CMD ["poetry", "run", "airsenal_run_pipeline"]
