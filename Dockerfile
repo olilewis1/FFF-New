@@ -10,4 +10,4 @@ COPY . /airsenal
 
 RUN poetry install --extras "api"
 
-CMD ["poetry", "run", "airsenal_run_pipeline", "airsenal_run_prediction"]
+CMD ["/usr/local/bin/poetry", "run", "airsenal_run_pipeline", "airsenal_run_prediction"]
