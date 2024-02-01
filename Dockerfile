@@ -13,8 +13,13 @@ WORKDIR /airsenal
 # Copy the project files
 COPY pyproject.toml poetry.lock /airsenal/
 
+# Set environment variables for Poetry
+ENV PATH="${PATH}:/root/.poetry/bin"
+ENV POETRY_HOME="/root/.poetry"
+ENV POETRY_VIRTUALENVS="/root/.venvs"
+
 # Install dependencies
-RUN $HOME/.poetry/bin/poetry install --no-interaction --no-ansi
+RUN poetry install --no-interaction --no-ansi
 
 # Set the entrypoint
-CMD ["sh", "-c", "FPL_TEAM_ID=$FPL_TEAM_ID $HOME/.poetry/bin/poetry run airsenal_run_pipeline"]
+CMD ["sh", "-c", "FPL_TEAM_ID=$FPL_TEAM_ID poetry run airsenal_run_pipeline"]
