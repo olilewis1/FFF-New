@@ -6,17 +6,13 @@ RUN apt-get update && \
 
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
+ENV PATH="${PATH}:/root/.local/bin"
 
 # Set up the working directory
 WORKDIR /airsenal
 
 # Copy the project files
 COPY pyproject.toml poetry.lock /airsenal/
-
-# Set environment variables for Poetry
-ENV PATH="${PATH}:/root/.poetry/bin"
-ENV POETRY_HOME="/root/.poetry"
-ENV POETRY_VIRTUALENVS="/root/.venvs"
 
 # Install dependencies
 RUN poetry install --no-interaction --no-ansi
