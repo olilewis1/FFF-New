@@ -17,5 +17,8 @@ COPY pyproject.toml poetry.lock /airsenal/
 # Install dependencies
 RUN poetry install --no-interaction --no-ansi
 
+# Copy the rest of the project
+COPY . /airsenal
+
 # Set the entrypoint
-CMD ["poetry", "run", "airsenal_run_pipeline"]
+CMD ["sh", "-c", "FPL_TEAM_ID=$FPL_TEAM_ID poetry run airsenal_run_pipeline"]
