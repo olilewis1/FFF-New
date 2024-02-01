@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node airsenal/scripts_to_work/server.js",
     "heroku-prebuild": "curl -sSL https://install.python-poetry.org | python3 -",
-    "heroku-postbuild": "export PATH=\"$HOME/.poetry/bin:$PATH\" && source $HOME/.profile"
+    "heroku-postbuild": "export PATH=\"$HOME/.poetry/bin:$PATH\" && . $HOME/.profile"
   },
   "keywords": [
     "example",
