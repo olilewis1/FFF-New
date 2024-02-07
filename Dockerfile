@@ -11,6 +11,9 @@ ENV PATH="${PATH}:/root/.local/bin"
 # Set up the working directory
 WORKDIR /airsenal
 
+# Create a volume directory
+RUN mkdir airsenal_data
+
 # Copy the project files
 COPY pyproject.toml poetry.lock /airsenal/
 
