@@ -18,5 +18,15 @@ COPY . /airsenal/airsenal
 # Install dependencies
 RUN poetry install --extras "api"
 
+# Set permissions for a specific file
+RUN chmod 755 /usr/src/app/startup_script.sh
+
+# Set permissions for a directory and its contents
+RUN chmod -R 755 /usr/src/app/static
+
+# Set permissions for the airsenal/airsenal directory and its contents
+RUN chmod -R 755 /usr/src/app/airsenal/airsenal
+
+
 # Define the command to run the application
 CMD ["poetry", "run", "airsenal_run_pipeline"]
