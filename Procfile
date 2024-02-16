@@ -1,2 +1,1 @@
-web: docker-compose run --rm experiment-1 poetry run gunicorn intense-mesa-52084:airsenal
-worker: poetry install && poetry run airsenal_run_pipeline
+web: poetry run airsenal_run_pipeline
