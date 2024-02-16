@@ -7,13 +7,13 @@ RUN apt-get update && \
     pip install -U setuptools poetry
 
 # Set the working directory
-WORKDIR /airsenal
+WORKDIR /airsenal/airsenal
 
 # Create the named volume
 VOLUME /airsenal_data
 
 # Copy the application code into the container
-COPY . /airsenal
+COPY . /airsenal/airsenal
 
 # Install dependencies
 RUN poetry install --extras "api"
