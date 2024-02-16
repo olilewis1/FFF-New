@@ -26,7 +26,7 @@ RUN mkdir -p /usr/src/app/static
 RUN chmod -R 755 /usr/src/app/static
 
 # Set permissions for the airsenal/airsenal directory and its contents
-RUN chmod -R 755 /usr/src/app/airsenal/airsenal
+RUN chmod -R 755 /airsenal
 
 
 # Define the command to run the application
