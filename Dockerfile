@@ -19,4 +19,4 @@ COPY . /airsenal
 RUN poetry install --extras "api"
 
 # Define the command to run the application
-CMD ["poetry", "run", "airsenal"]
+CMD ["poetry", "run", "airsenal_run_pipeline"]
