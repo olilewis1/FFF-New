@@ -19,7 +19,10 @@ COPY . /airsenal/airsenal
 RUN poetry install --extras "api"
 
 
-# Set permissions for a directory and its contents
+# Create the directory if it doesn't exist
+RUN mkdir -p /usr/src/app/static
+
+# Set permissions for the directory and its contents
 RUN chmod -R 755 /usr/src/app/static
 
 # Set permissions for the airsenal/airsenal directory and its contents
