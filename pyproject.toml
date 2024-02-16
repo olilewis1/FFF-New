@@ -7,7 +7,7 @@ authors = [
 	"Jack Roberts <jroberts@turing.ac.uk>",
 	"Nick Barlow <nbarlow@turing.ac.uk>",
 ]
-
+poetry = "1.6.1"
 [tool.poetry.dependencies]
 python = ">=3.9,<3.12"
 bpl = { git = "https://github.com/anguswilliams91/bpl-next", branch = "main" }
