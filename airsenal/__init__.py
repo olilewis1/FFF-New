@@ -6,4 +6,4 @@ from importlib.metadata import version
 
 # AIrsenal package version.
 __version__ = version(__name__)
-print(__version__)
+

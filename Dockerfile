@@ -16,7 +16,7 @@ VOLUME /airsenal_data
 COPY . /airsenal
 
 # Install dependencies
-RUN poetry install 
+RUN poetry install --extras "api"
 
 # Define the command to run the application
 CMD ["poetry", "run", "airsenal_run_pipeline"]
