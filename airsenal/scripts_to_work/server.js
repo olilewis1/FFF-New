@@ -87,11 +87,7 @@ const id = req.body.fplId
 const email = req.body.login
 // const email = "oliverlewis1331@gmail.com"
 const password = req.body.password
-// const password = "Flynn@1992"
-// const id = "9884044"
-// const email = "olilewis1@hotmail.co.uk"
-// const password = "Flynn@2020"
-      // Execute the first script to set variables
+
 exec(`./airsenal_set_variables.sh ${password} ${email} ${id}`, (error, stdout, stderr) => { 
   console.log('hey im here')
   if (error) {
